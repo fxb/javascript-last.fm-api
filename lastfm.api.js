@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2008-2009, Felix Bruns <felixbruns@web.de>
+ * Copyright (c) 2008-2010, Felix Bruns <felixbruns@web.de>
  *
  */
 
@@ -156,10 +156,8 @@ function LastFM(options){
 				array.push(encodeURIComponent(param) + "=" + encodeURIComponent(params[param]));
 			}
 
-			params = array.join('&').replace(/%20/g, '+');
-
 			/* Set script source. */
-			script.src = apiUrl + '?' + params;
+			script.src = apiUrl + '?' + array.join('&').replace(/%20/g, '+');
 
 			/* Append script element. */
 			head.appendChild(script);
@@ -215,6 +213,10 @@ function LastFM(options){
 			signedCall('album.addTags', params, session, callbacks, 'POST');
 		},
 
+		getBuylinks : function(params, callbacks){
+			call('album.getBuylinks', params, callbacks);
+		},
+
 		getInfo : function(params, callbacks){
 			call('album.getInfo', params, callbacks);
 		},
@@ -229,6 +231,15 @@ function LastFM(options){
 
 		search : function(params, callbacks){
 			call('album.search', params, callbacks);
+		},
+
+		share : function(params, session, callbacks){
+			/* Build comma separated recipients string. */
+			if(typeof(params.recipient) == 'object'){
+				params.recipient = params.recipient.join(',');
+			}
+
+			signedCall('album.share', params, callbacks);
 		}
 	};
 
@@ -389,6 +400,14 @@ function LastFM(options){
 			call('geo.getMetroArtistChart', params, callbacks);
 		},
 
+		getMetroHypeArtistChart : function(params, callbacks){
+			call('geo.getMetroHypeArtistChart', params, callbacks);
+		},
+
+		getMetroHypeTrackChart : function(params, callbacks){
+			call('geo.getMetroHypeTrackChart', params, callbacks);
+		},
+
 		getMetroTrackChart : function(params, callbacks){
 			call('geo.getMetroTrackChart', params, callbacks);
 		},
@@ -542,6 +561,10 @@ function LastFM(options){
 			signedCall('track.ban', params, session, callbacks, 'POST');
 		},
 
+		getBuylinks : function(params, callbacks){
+			call('track.getBuylinks', params, callbacks);
+		},
+
 		getInfo : function(params, callbacks){
 			call('track.getInfo', params, callbacks);
 		},
@@ -586,6 +609,10 @@ function LastFM(options){
 
 	/* User methods. */
 	this.user = {
+		getArtistTracks : function(params, callbacks){
+			call('user.getArtistTracks', params, callbacks);
+		},
+
 		getEvents : function(params, callbacks){
 			call('user.getEvents', params, callbacks);
 		},

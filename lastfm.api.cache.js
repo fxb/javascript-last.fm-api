@@ -11,7 +11,9 @@ Storage.prototype.setObject = function(key, value){
 
 /* Get an object from a Storage object. */
 Storage.prototype.getObject = function(key){
-	return JSON.parse(this.getItem(key));
+	var item = this.getItem(key);
+
+	return JSON.parse(item);
 }
 
 /* Creates a new cache object. */
@@ -55,7 +57,7 @@ function LastFMCache(){
 	this.getExpirationTime = function(params){
 		var method = params.method;
 
-		if((/Weekly/).test(method) && /List/.test(method) == false){
+		if((/Weekly/).test(method) && !(/List/).test(method)){
 			if(typeof(params.to) != 'undefined' && typeof(params.from) != 'undefined'){
 				return YEAR;
 			}

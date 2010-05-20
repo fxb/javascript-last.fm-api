@@ -55,9 +55,12 @@ If you want to use caching, you need to add another script:
 	<script type="text/javascript" src="lastfm.api.cache.js"></script>
 
 Built in JSON support should be available in modern browsers, if you want to
-be sure it's supported, include the following line:
+be sure it's supported, include the following:
 
-	<script type="text/javascript" src="http://www.json.org/json2.js"></script>
+	<script type="text/javascript" src="json2.js"></script>
+
+You can get that file at http://www.json.org/json2.js , and make sure you've
+removed the first line before using it.
 
 Now you can use the JavaScript last.fm API like this:
 
