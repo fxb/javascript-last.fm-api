@@ -254,6 +254,10 @@ function LastFM(options){
 			signedCall('artist.addTags', params, session, callbacks, 'POST');
 		},
 
+		getCorrection : function(params, callbacks){
+			call('artist.getCorrection', params, callbacks);
+		},
+
 		getEvents : function(params, callbacks){
 			call('artist.getEvents', params, callbacks);
 		},
@@ -358,6 +362,33 @@ function LastFM(options){
 		}
 	};
 
+	/* Chart methods. */
+	this.chart = {
+		getHypedArtists : function(params, session, callbacks){
+			call('chart.getHypedArtists', params, callbacks);
+		},
+
+		getHypedTracks : function(params, session, callbacks){
+			call('chart.getHypedTracks', params, callbacks);
+		},
+
+		getLovedTracks : function(params, session, callbacks){
+			call('chart.getLovedTracks', params, callbacks);
+		},
+
+		getTopArtists : function(params, session, callbacks){
+			call('chart.getTopArtists', params, callbacks);
+		},
+
+		getTopTags : function(params, session, callbacks){
+			call('chart.getTopTags', params, callbacks);
+		},
+
+		getTopTracks : function(params, session, callbacks){
+			call('chart.getTopTracks', params, callbacks);
+		}
+	};
+
 	/* Event methods. */
 	this.event = {
 		attend : function(params, session, callbacks){
@@ -424,6 +455,10 @@ function LastFM(options){
 			call('geo.getMetroWeeklyChartlist', params, callbacks);
 		},
 
+		getMetros : function(params, callbacks){
+			call('geo.getMetros', params, callbacks);
+		},
+
 		getTopArtists : function(params, callbacks){
 			call('geo.getTopArtists', params, callbacks);
 		},
@@ -435,6 +470,10 @@ function LastFM(options){
 
 	/* Group methods. */
 	this.group = {
+		getHype : function(params, callbacks){
+			call('group.getHype', params, callbacks);
+		},
+
 		getMembers : function(params, callbacks){
 			call('group.getMembers', params, callbacks);
 		},
@@ -444,7 +483,7 @@ function LastFM(options){
 		},
 
 		getWeeklyArtistChart : function(params, callbacks){
-			call('group.group.getWeeklyArtistChart', params, callbacks);
+			call('group.getWeeklyArtistChart', params, callbacks);
 		},
 
 		getWeeklyChartList : function(params, callbacks){
@@ -504,6 +543,10 @@ function LastFM(options){
 			signedCall('radio.getPlaylist', params, session, callbacks);
 		},
 
+		search : function(params, session, callbacks){
+			signedCall('radio.search', params, session, callbacks);
+		},
+
 		tune : function(params, session, callbacks){
 			signedCall('radio.tune', params, session, callbacks);
 		}
@@ -511,6 +554,10 @@ function LastFM(options){
 
 	/* Tag methods. */
 	this.tag = {
+		getInfo : function(params, callbacks){
+			call('tag.getInfo', params, callbacks);
+		},
+
 		getSimilar : function(params, callbacks){
 			call('tag.getSimilar', params, callbacks);
 		},
@@ -548,6 +595,10 @@ function LastFM(options){
 	this.tasteometer = {
 		compare : function(params, callbacks){
 			call('tasteometer.compare', params, callbacks);
+		},
+
+		compareGroup : function(params, callbacks){
+			call('tasteometer.compareGroup', params, callbacks);
 		}
 	};
 
@@ -565,8 +616,20 @@ function LastFM(options){
 			call('track.getBuylinks', params, callbacks);
 		},
 
+		getCorrection : function(params, callbacks){
+			call('track.getCorrection', params, callbacks);
+		},
+
+		getFingerprintMetadata : function(params, callbacks){
+			call('track.getFingerprintMetadata', params, callbacks);
+		},
+
 		getInfo : function(params, callbacks){
 			call('track.getInfo', params, callbacks);
+		},
+
+		getShouts : function(params, callbacks){
+			call('track.getShouts', params, callbacks);
 		},
 
 		getSimilar : function(params, callbacks){
@@ -593,6 +656,23 @@ function LastFM(options){
 			signedCall('track.removeTag', params, session, callbacks, 'POST');
 		},
 
+		scrobble : function(params, callbacks){
+			/* Flatten an array of multiple tracks into an object with "array notation". */
+			if(params.constructor.toString().indexOf("Array") != -1){
+				var p = {};
+
+				for(i in params){
+					for(j in params[i]){
+						p[j + '[' + i + ']'] = params[i][j];
+					}
+				}
+
+				params = p;
+			}
+
+			signedCall('track.scrobble', params, session, callbacks, 'POST');
+		},
+
 		search : function(params, callbacks){
 			call('track.search', params, callbacks);
 		},
@@ -604,6 +684,18 @@ function LastFM(options){
 			}
 
 			signedCall('track.share', params, session, callbacks, 'POST');
+		},
+
+		unban : function(params, session, callbacks){
+			signedCall('track.unban', params, session, callbacks, 'POST');
+		},
+
+		unlove : function(params, session, callbacks){
+			signedCall('track.unlove', params, session, callbacks, 'POST');
+		},
+
+		updateNowPlaying : function(params, session, callbacks){
+			signedCall('track.updateNowPlaying', params, session, callbacks, 'POST');
 		}
 	};
 
@@ -611,6 +703,10 @@ function LastFM(options){
 	this.user = {
 		getArtistTracks : function(params, callbacks){
 			call('user.getArtistTracks', params, callbacks);
+		},
+
+		getBannedTracks : function(params, callbacks){
+			call('user.getBannedTracks', params, callbacks);
 		},
 
 		getEvents : function(params, callbacks){
@@ -633,8 +729,16 @@ function LastFM(options){
 			call('user.getNeighbours', params, callbacks);
 		},
 
+		getNewReleases : function(params, callbacks){
+			call('user.getNewReleases', params, callbacks);
+		},
+
 		getPastEvents : function(params, callbacks){
 			call('user.getPastEvents', params, callbacks);
+		},
+
+		getPersonalTracks : function(params, callbacks){
+			call('user.getPersonalTracks', params, callbacks);
 		},
 
 		getPlaylists : function(params, callbacks){
