@@ -31,6 +31,9 @@ function LastFM(options){
 		cache = _cache;
 	};
 
+	/* Set the JSONP callback identifier counter. This is used to ensure the callbacks are unique */
+	var jsonpCounter = 0;
+
 	/* Internal call (POST, GET). */
 	var internalCall = function(params, callbacks, requestMethod){
 		/* Cross-domain POST request (doesn't return any data, always successful). */
@@ -90,7 +93,10 @@ function LastFM(options){
 		/* Cross-domain GET request (JSONP). */
 		else{
 			/* Get JSONP callback name. */
-			var jsonp = 'jsonp' + new Date().getTime();
+			var jsonp = 'jsonp' + new Date().getTime() + jsonpCounter;
+
+			/* Update the unique JSONP callback counter */
+			jsonpCounter += 1;
 
 			/* Calculate cache hash. */
 			var hash = auth.getApiSignature(params);
