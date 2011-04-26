@@ -662,7 +662,7 @@ function LastFM(options){
 			signedCall('track.removeTag', params, session, callbacks, 'POST');
 		},
 
-		scrobble : function(params, callbacks){
+		scrobble : function(params, session, callbacks){
 			/* Flatten an array of multiple tracks into an object with "array notation". */
 			if(params.constructor.toString().indexOf("Array") != -1){
 				var p = {};
