@@ -1,0 +1,19 @@
+{
+  "name": "lastfm.api",
+  "version": "0.0.0",
+  "description": "Last.fm API js wrapper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/molefrog/javascript-last.fm-api.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/molefrog/javascript-last.fm-api/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.2"
+  }
+}
