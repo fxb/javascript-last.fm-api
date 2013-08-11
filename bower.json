@@ -1,0 +1,13 @@
+{
+  "name": "lastfm-api",
+  "version": "0.0.1",
+  "main": "lastfm-api.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
