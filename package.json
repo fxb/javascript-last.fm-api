@@ -1,7 +1,7 @@
 {
   "name": "lastfm.api",
   "version": "0.0.0",
-  "description": "Last.fm API js wrapper",
+  "description": "Last.fm API bindings for JavaScript",
   "repository": {
     "type": "git",
     "url": "https://github.com/molefrog/javascript-last.fm-api.git"
