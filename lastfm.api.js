@@ -47,18 +47,18 @@ function LastFM(options){
 			iframe.width        = 1;
 			iframe.height       = 1;
 			iframe.style.border = 'none';
+
+			/* Append iframe. */
+			html.appendChild(iframe);
 			iframe.onload       = function(){
 				/* Remove iframe element. */
-				//html.removeChild(iframe);
+				html.removeChild(iframe);
 
 				/* Call user callback. */
 				if(typeof(callbacks.success) != 'undefined'){
 					callbacks.success();
 				}
 			};
-
-			/* Append iframe. */
-			html.appendChild(iframe);
 
 			/* Get iframe document. */
 			if(typeof(iframe.contentWindow) != 'undefined'){
