@@ -830,20 +830,13 @@ function LastFM(options){
 	/* Private auth methods. */
 	var auth = {
 		getApiSignature : function(params){
-			var keys   = [];
+			var keys = Object.keys(params);
 			var string = '';
 
-			for(var key in params){
-				keys.push(key);
-			}
-
 			keys.sort();
-
-			for(var index in keys){
-				var key = keys[index];
-
+			keys.forEach(function(key) {
 				string += key + params[key];
-			}
+			});
 
 			string += apiSecret;
 
