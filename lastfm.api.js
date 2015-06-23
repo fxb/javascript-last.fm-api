@@ -231,6 +231,10 @@ function LastFM(options){
 			signedCall('album.getTags', params, session, callbacks);
 		},
 
+		getTopTags: function(params, callbacks){
+			signedCall('album.getTopTags', params, callbacks);
+		},
+
 		removeTag : function(params, session, callbacks){
 			signedCall('album.removeTag', params, session, callbacks, 'POST');
 		},
