@@ -40,7 +40,7 @@ Scrobbling is not yet supported.
 You need to add the following scripts to your code in order to work with the
 JavaScript last.fm API:
 
-  <script type="text/javascript" src="lastfm.api.md5.js"></script>
+    <script type="text/javascript" src="lastfm.api.md5.js"></script>
     <script type="text/javascript" src="lastfm.api.js"></script>
 
 If you want to use caching, you need to add another script:
