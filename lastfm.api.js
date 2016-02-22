@@ -747,8 +747,8 @@ function LastFM(options){
 			call('user.getPastEvents', params, callbacks);
 		},
 
-		getPersonalTracks : function(params, callbacks){
-			call('user.getPersonalTracks', params, callbacks);
+		getPersonalTags : function(params, callbacks){
+			call('user.getPersonalTags', params, callbacks);
 		},
 
 		getPlaylists : function(params, callbacks){
