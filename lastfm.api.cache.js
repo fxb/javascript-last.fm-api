@@ -66,8 +66,8 @@ function LastFMCache(){
 			}
 		}
 
-		for(var key in this.weeklyMethods){
-			if(method == this.weeklyMethods[key]){
+		for(var key in weeklyMethods){
+			if(method == weeklyMethods[key]){
 				return WEEK;
 			}
 		}
