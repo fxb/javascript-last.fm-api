@@ -1,13 +1,13 @@
-##JavaScript last.fm API Readme
+## JavaScript last.fm API Readme
 
-###Overview
+### Overview
 
 The JavaScript last.fm API allows you to call last.fm API methods and get the
 corresponding JSON responses. Basically it just acts as a wrapper that gives
 easy access to API methods. Responses can be cached using the localStorage API.
 
 
-###Encoding
+### Encoding
 
 You don't need to worry about encoding when calling API methods. Everything
 should automatically be UTF-8 encoded and decoded by your browser if you set
@@ -16,26 +16,26 @@ the Content-Type for your document to UTF-8:
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 
-###Authentication
+### Authentication
 
 It's easy to fetch a session for a user account. This allows you to perform
 actions on that account in a manner that is secure for last.fm users. All
 write services require authentication.
 
 
-###Write methods
+### Write methods
 
 Due to technical restrictions it's not possible to get a response when calling
 write methods. Reading responses is only possible using HTTP Access-Control,
 which is currently not supported by the last.fm API.
 
 
-###Submissions
+### Submissions
 
 Scrobbling is not yet supported.
 
 
-###Usage
+### Usage
 
 You need to add the following scripts to your code in order to work with the
 JavaScript last.fm API:
@@ -75,7 +75,7 @@ Now you can use the JavaScript last.fm API like this:
     }});
 
 
-###More
+### More
 
 For further information, please visit the official API documentation:
 http://www.last.fm/api
